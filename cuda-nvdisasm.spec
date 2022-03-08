@@ -8,7 +8,7 @@
 
 Name:           %(echo %real_name | tr '_' '-')
 Epoch:          1
-Version:        11.6.55
+Version:        11.6.104
 Release:        1%{?dist}
 Summary:        Utility to extract information from CUDA binary files
 License:        CUDA Toolkit
@@ -50,6 +50,9 @@ install -m 0755 -p -D bin/nvdisasm %{buildroot}%{_bindir}/nvdisasm
 %{_bindir}/nvdisasm
 
 %changelog
+* Tue Mar 08 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.104-1
+- Update to 11.6.104 (CUDA 11.6.1).
+
 * Tue Jan 25 2022 Simone Caronni <negativo17@gmail.com> - 1:11.6.55-1
 - First build with the new tarball components.
 
