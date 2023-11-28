@@ -8,7 +8,7 @@
 
 Name:           %(echo %real_name | tr '_' '-')
 Epoch:          1
-Version:        12.2.140
+Version:        12.3.101
 Release:        1%{?dist}
 Summary:        Utility to extract information from CUDA binary files
 License:        CUDA Toolkit
@@ -17,7 +17,7 @@ ExclusiveArch:  x86_64 ppc64le aarch64
 
 Source0:        https://developer.download.nvidia.com/compute/cuda/redist/%{real_name}/linux-x86_64/%{real_name}-linux-x86_64-%{version}-archive.tar.xz
 Source1:        https://developer.download.nvidia.com/compute/cuda/redist/%{real_name}/linux-ppc64le/%{real_name}-linux-ppc64le-%{version}-archive.tar.xz
-Source2:        https://developer.download.nvidia.com/compute/cuda/redist/%{real_name}/linux-aarch64/%{real_name}-linux-aarch64-%{version}-archive.tar.xz
+Source2:        https://developer.download.nvidia.com/compute/cuda/redist/%{real_name}/linux-sbsa/%{real_name}-linux-sbsa-%{version}-archive.tar.xz
 
 Conflicts:      %{name}-%{major_package_version} < %{?epoch:%{epoch}:}%{version}-%{release}
  
@@ -39,7 +39,7 @@ makes the output easier to read.
 %endif
 
 %ifarch aarch64
-%setup -q -T -b 2 -n %{real_name}-linux-aarch64-%{version}-archive
+%setup -q -T -b 2 -n %{real_name}-linux-sbsa-%{version}-archive
 %endif
 
 %install
@@ -50,6 +50,9 @@ install -m 0755 -p -D bin/nvdisasm %{buildroot}%{_bindir}/nvdisasm
 %{_bindir}/nvdisasm
 
 %changelog
+* Tue Nov 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.3.101-1
+- Update to 12.3.101.
+
 * Thu Sep 28 2023 Simone Caronni <negativo17@gmail.com> - 1:12.2.140-1
 - Update to 12.2.140.
 
